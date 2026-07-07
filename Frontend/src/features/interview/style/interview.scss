@@ -1,0 +1,1468 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
+
+$bg: #071525;
+$card: #122033;
+$card2: #162538;
+$pink: #ff5d87;
+$text: #ffffff;
+$muted: #9ca7b5;
+$border: rgba(255,255,255,.08);
+$green: #22c55e;
+$yellow: #eab308;
+$red: #ef4444;
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Inter",sans-serif;
+}
+
+body{
+    background:$bg;
+}
+
+.analysis-header {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1.5rem;
+}
+
+
+ 
+.interview-page{
+
+    min-height:100vh;
+
+    padding:40px;
+
+    background:
+        radial-gradient(circle at top left,#23344c 0%,transparent 35%),
+        radial-gradient(circle at bottom right,#1a2840 0%,transparent 40%),
+        $bg;
+
+    position:relative;
+    overflow:hidden;
+
+}
+
+.interview-page::before{
+
+    content:"";
+
+    position:fixed;
+
+    width:450px;
+    height:450px;
+
+    top:-180px;
+    left:-180px;
+
+    border-radius:50%;
+
+    background:radial-gradient(circle,
+        rgba(255,93,135,.12),
+        transparent 70%);
+
+    filter:blur(90px);
+
+    pointer-events:none;
+
+}
+
+.dashboard{
+
+    max-width:1600px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:240px 1fr 300px;
+
+    gap:28px;
+
+    align-items:start;
+
+}
+
+/* ==========================================================
+                        SIDEBAR
+========================================================== */
+
+.sidebar{
+
+    background:rgba(18,32,51,.78);
+    display:flex;
+    flex-direction:column;
+
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+
+    border:1px solid $border;
+
+    border-radius:26px;
+
+    padding:30px 24px;
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.35),
+        0 0 0 1px rgba(255,255,255,.03) inset;
+
+    position:sticky;
+
+    top:30px;
+
+    overflow:hidden;
+
+    
+}
+
+.menu{
+    flex:1;
+}
+
+.sidebar-footer {
+  margin-top: auto;
+  padding-top: 1.5rem;
+}
+
+.download-btn {
+  width: 100%;
+  height: 52px;
+  border: none;
+  border-radius: 14px;
+  gap:12px;
+
+  background: linear-gradient(
+    135deg,
+    #ff4f87,
+    #ff2d6f
+  );
+
+  color: white;
+  font-size: 0.95rem;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all .3s ease;
+}
+
+.download-btn:hover {
+  transform: translateY(-2px);
+
+  box-shadow: 0 10px 25px rgba(255,79,135,.35);
+}
+
+.download-btn svg {
+  font-size: 1.1rem;
+   margin-right: 10px;
+  flex-shrink: 0;
+}
+
+.sidebar::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(
+        135deg,
+        rgba(255,255,255,.04),
+        transparent 35%
+    );
+
+    pointer-events:none;
+
+}
+
+/* ==========================================================
+                        LOGO
+========================================================== */
+
+.logo{
+
+    color:$text;
+
+    font-size:38px;
+
+    font-weight:800;
+
+    margin-bottom:45px;
+
+    letter-spacing:-1px;
+
+    position:relative;
+
+}
+
+.logo::after{
+
+    content:"";
+
+    display:block;
+
+    width:60px;
+
+    height:4px;
+
+    margin-top:12px;
+
+    border-radius:30px;
+
+    background:linear-gradient(
+        90deg,
+        $pink,
+        transparent
+    );
+
+}
+
+/* ==========================================================
+                        MENU
+========================================================== */
+
+.menu{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:14px;
+
+}
+
+.item{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:16px;
+
+    padding:18px 18px;
+
+    border-radius:16px;
+
+    color:$muted;
+
+    cursor:pointer;
+
+    transition:.35s;
+
+    border:1px solid transparent;
+
+    user-select:none;
+
+}
+
+.item svg{
+
+    font-size:22px;
+
+    transition:.35s;
+
+}
+
+.item span{
+
+    font-size:16px;
+
+    font-weight:500;
+
+    line-height:1.3;
+
+}
+
+.item:hover{
+
+    background:#1b2c43;
+
+    color:white;
+
+    transform:translateX(4px);
+
+}
+
+.item:hover svg{
+
+    color:$pink;
+
+}
+
+.item.active{
+
+    background:rgba(255,93,135,.14);
+
+    color:$pink;
+
+    border:1px solid rgba(255,93,135,.18);
+
+    box-shadow:
+        0 10px 25px rgba(255,93,135,.12);
+
+}
+
+.item.active svg{
+
+    color:$pink;
+
+}
+
+/* Left glowing bar */
+
+.item.active::before{
+
+    content:"";
+
+    width:4px;
+
+    height:26px;
+
+    border-radius:20px;
+
+    background:$pink;
+
+    margin-right:2px;
+
+}
+
+/* ==========================================================
+                    SIDEBAR ANIMATION
+========================================================== */
+
+.item{
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.item::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:-120%;
+
+    top:0;
+
+    width:100%;
+
+    height:100%;
+
+    background:rgba(255,255,255,.06);
+
+    transform:skewX(-25deg);
+
+    transition:.7s;
+
+}
+
+.item:hover::after{
+
+    left:130%;
+
+}
+
+/* ==========================================================
+                    CONTENT PANEL
+========================================================== */
+
+.content{
+
+    background:rgba(18,32,51,.78);
+
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+
+    border:1px solid $border;
+
+    border-radius:26px;
+
+    padding:34px;
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.35),
+        0 0 0 1px rgba(255,255,255,.03) inset;
+
+    min-height:82vh;
+
+    display:flex;
+
+    flex-direction:column;
+
+    overflow:hidden;
+
+    position:relative;
+
+}
+
+.content::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    border-radius:inherit;
+
+    pointer-events:none;
+
+    background:linear-gradient(
+        135deg,
+        rgba(255,255,255,.03),
+        transparent 35%
+    );
+
+}
+
+/* ==========================================================
+                    PAGE HEADER
+========================================================== */
+
+.page-title{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding-bottom:22px;
+
+    border-bottom:1px solid rgba(255,255,255,.06);
+
+    margin-bottom:28px;
+
+}
+
+.page-title h2{
+
+    color:white;
+
+    font-size:34px;
+
+    font-weight:700;
+
+    letter-spacing:-.5px;
+
+}
+
+.count{
+
+    padding:9px 18px;
+
+    border-radius:999px;
+
+    background:#1a2b42;
+
+    color:$muted;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    border:1px solid rgba(255,255,255,.06);
+
+}
+
+/* ==========================================================
+                    QUESTION LIST
+========================================================== */
+
+.cards{
+
+    flex:1;
+
+    overflow-y:auto;
+
+    padding-right:8px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:16px;
+
+}
+
+/* Custom Scrollbar */
+
+.cards::-webkit-scrollbar{
+
+    width:7px;
+
+}
+
+.cards::-webkit-scrollbar-track{
+
+    background:transparent;
+
+}
+
+.cards::-webkit-scrollbar-thumb{
+
+    background:#31445d;
+
+    border-radius:20px;
+
+}
+
+.cards::-webkit-scrollbar-thumb:hover{
+
+    background:$pink;
+
+}
+
+/* ==========================================================
+                    EMPTY STATE
+========================================================== */
+
+.cards:empty::after{
+
+    content:"No data available";
+
+    color:$muted;
+
+    font-size:18px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    height:100%;
+
+}
+
+/* ==========================================================
+                    HOVER
+========================================================== */
+
+.content:hover{
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.40),
+        0 0 35px rgba(255,93,135,.04);
+
+    transition:.35s;
+
+}
+
+
+/* ==========================================================
+                    QUESTION CARD
+========================================================== */
+
+.question-card{
+
+    background:#16253b;
+
+    border:1px solid rgba(255,255,255,.06);
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    transition:.35s;
+
+    box-shadow:0 8px 18px rgba(0,0,0,.12);
+
+}
+
+.question-card:hover{
+
+    border-color:rgba(255,93,135,.15);
+
+    transform:translateY(-3px);
+
+    box-shadow:
+        0 18px 35px rgba(0,0,0,.25),
+        0 0 20px rgba(255,93,135,.05);
+
+}
+
+/* ==========================================================
+                    HEADER
+========================================================== */
+
+.question-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:20px 22px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.question-header:hover{
+
+    background:#1a2b42;
+
+}
+
+.question-left{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+    flex:1;
+
+}
+
+/* ==========================================================
+                    QUESTION NUMBER
+========================================================== */
+
+.badge{
+
+    min-width:42px;
+
+    height:28px;
+
+    border-radius:8px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:rgba(255,93,135,.14);
+
+    color:$pink;
+
+    font-size:13px;
+
+    font-weight:700;
+
+    letter-spacing:.5px;
+
+}
+
+/* ==========================================================
+                    QUESTION TITLE
+========================================================== */
+
+.question-left h3{
+
+    color:white;
+
+    font-size:17px;
+
+    font-weight:600;
+
+    line-height:1.6;
+
+}
+
+/* ==========================================================
+                    ARROW
+========================================================== */
+
+.arrow{
+
+    width:34px;
+
+    height:34px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:#20344e;
+
+    color:$muted;
+
+    transition:.35s;
+
+}
+
+.question-header:hover .arrow{
+
+    color:white;
+
+    background:$pink;
+
+}
+
+/* ==========================================================
+                    BODY
+========================================================== */
+
+.question-body{
+
+    padding:0 22px 22px;
+
+    animation:slideDown .35s ease;
+
+}
+
+/* ==========================================================
+                    ANSWER BOX
+========================================================== */
+
+.answer-box{
+
+    background:#0f1d2d;
+
+    border:1px solid rgba(255,255,255,.06);
+
+    border-radius:14px;
+
+    padding:18px;
+
+    margin-top:18px;
+
+}
+
+/* ==========================================================
+                    LABEL
+========================================================== */
+
+.label{
+
+    display:inline-block;
+
+    padding:6px 12px;
+
+    border-radius:8px;
+
+    font-size:11px;
+
+    font-weight:700;
+
+    letter-spacing:1px;
+
+    margin-bottom:14px;
+
+}
+
+.label.purple{
+
+    background:#5748b7;
+
+    color:white;
+
+}
+
+.label.green{
+
+    background:#169b4a;
+
+    color:white;
+
+}
+
+/* ==========================================================
+                    ANSWER TEXT
+========================================================== */
+
+.answer-box p{
+
+    color:$muted;
+
+    line-height:1.8;
+
+    font-size:15px;
+
+}
+
+/* ==========================================================
+                    ACCORDION ANIMATION
+========================================================== */
+
+@keyframes slideDown{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(-10px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+
+/* ==========================================================
+                    RIGHT PANEL
+========================================================== */
+
+.analysis{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:22px;
+
+    position:sticky;
+
+    top:30px;
+
+}
+
+.score-card,
+.skill-card{
+
+    background:rgba(18,32,51,.78);
+
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:24px;
+
+    padding:28px;
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.35),
+        0 0 0 1px rgba(255,255,255,.03) inset;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.score-card::before,
+.skill-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(
+        135deg,
+        rgba(255,255,255,.04),
+        transparent 35%
+    );
+
+    pointer-events:none;
+
+}
+
+/* ==========================================================
+                        TITLES
+========================================================== */
+
+.score-card h4,
+.skill-card h4{
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:700;
+
+    margin-bottom:24px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+.skill-card svg{
+
+    color:$pink;
+
+}
+
+/* ==========================================================
+                    CIRCULAR PROGRESS
+========================================================== */
+
+.circle{
+
+    width:170px;
+
+    height:170px;
+
+    margin:0 auto;
+
+    position:relative;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.circle svg{
+
+    width:170px;
+
+    height:170px;
+
+    transform:rotate(-90deg);
+
+}
+
+.track{
+
+    fill:none;
+
+    stroke:#24364d;
+
+    stroke-width:10;
+
+}
+
+.progress{
+
+    fill:none;
+
+    stroke:$green;
+
+    stroke-width:10;
+
+    stroke-linecap:round;
+
+    animation:progressAnimation 1.5s ease;
+
+    transition:stroke-dashoffset 1s ease;
+
+}
+
+/* ==========================================================
+                    SCORE TEXT
+========================================================== */
+
+.score-text{
+
+    position:absolute;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.score-number{
+
+    display:flex;
+
+    align-items:flex-start;
+
+    color:white;
+
+    font-size:50px;
+
+    font-weight:800;
+
+    line-height:1;
+
+}
+
+.score-number span{
+
+    margin-top:8px;
+
+    margin-left:3px;
+
+    font-size:22px;
+
+    color:$muted;
+
+}
+
+/* ==========================================================
+                    SCORE STATUS
+========================================================== */
+
+.score-card p{
+
+    text-align:center;
+
+    margin-top:18px;
+
+    color:$green;
+
+    font-weight:600;
+
+    font-size:15px;
+
+}
+
+/* ==========================================================
+                    SKILLS
+========================================================== */
+
+.skills{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:12px;
+
+}
+
+.skills span{
+
+    padding:10px 16px;
+
+    border-radius:999px;
+
+    font-size:13px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+    cursor:pointer;
+
+    color:white;
+
+}
+
+.skills span:hover{
+
+    transform:translateY(-2px);
+
+}
+
+/* Severity */
+
+.high{
+
+    background:#742b34;
+
+}
+
+.medium{
+
+    background:#7a6225;
+
+}
+
+.low{
+
+    background:#206443;
+
+}
+
+/* ==========================================================
+                    PROGRESS ANIMATION
+========================================================== */
+
+@keyframes progressAnimation{
+
+    from{
+
+        stroke-dashoffset:440;
+
+    }
+
+}
+
+
+/* ==========================================================
+                    RESPONSIVE
+========================================================== */
+
+@media (max-width:1400px){
+
+    .dashboard{
+
+        grid-template-columns:220px 1fr 280px;
+
+    }
+
+}
+
+@media (max-width:1200px){
+
+    .dashboard{
+
+        grid-template-columns:220px 1fr;
+
+    }
+
+    .analysis{
+
+        position:static;
+
+        display:grid;
+
+        grid-template-columns:1fr 1fr;
+
+        gap:20px;
+
+    }
+
+}
+
+@media (max-width:992px){
+
+    .interview-page{
+
+        padding:24px;
+
+    }
+
+    .dashboard{
+
+        grid-template-columns:1fr;
+
+        gap:24px;
+
+    }
+
+    .sidebar{
+
+        position:static;
+
+    }
+
+    .analysis{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .content{
+
+        min-height:auto;
+
+    }
+
+}
+
+@media (max-width:768px){
+
+    .interview-page{
+
+        padding:18px;
+
+    }
+
+    .sidebar,
+    .content,
+    .score-card,
+    .skill-card{
+
+        padding:22px;
+
+    }
+
+    .page-title{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:14px;
+
+    }
+
+    .page-title h2{
+
+        font-size:28px;
+
+    }
+
+    .circle{
+
+        width:145px;
+
+        height:145px;
+
+    }
+
+    .circle svg{
+
+        width:145px;
+
+        height:145px;
+
+    }
+
+}
+
+@media (max-width:500px){
+
+    .sidebar{
+
+        padding:18px;
+
+    }
+
+    .item{
+
+        padding:14px;
+
+    }
+
+    .item span{
+
+        font-size:14px;
+
+    }
+
+    .question-header{
+
+        padding:16px;
+
+    }
+
+    .question-left{
+
+        gap:12px;
+
+    }
+
+    .question-left h3{
+
+        font-size:15px;
+
+    }
+
+    .answer-box{
+
+        padding:15px;
+
+    }
+
+    .score-number{
+
+        font-size:40px;
+
+    }
+
+    .score-number span{
+
+        font-size:18px;
+
+    }
+
+}
+
+/* ==========================================================
+                    PREMIUM HOVER
+========================================================== */
+
+.sidebar,
+.content,
+.score-card,
+.skill-card{
+
+    transition:all .35s ease;
+
+}
+
+.sidebar:hover,
+.content:hover,
+.score-card:hover,
+.skill-card:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:
+
+        0 30px 60px rgba(0,0,0,.40),
+
+        0 0 0 1px rgba(255,255,255,.04) inset,
+
+        0 0 25px rgba(255,93,135,.06);
+
+}
+
+/* ==========================================================
+                    CARD SHINE
+========================================================== */
+
+.question-card::after,
+.score-card::after,
+.skill-card::after,
+.content::after{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:-120%;
+
+    width:70%;
+
+    height:100%;
+
+    background:linear-gradient(
+
+        90deg,
+
+        transparent,
+
+        rgba(255,255,255,.05),
+
+        transparent
+
+    );
+
+    transform:skewX(-25deg);
+
+    transition:1s;
+
+}
+
+.question-card:hover::after,
+.score-card:hover::after,
+.skill-card:hover::after,
+.content:hover::after{
+
+    left:140%;
+
+}
+
+/* ==========================================================
+                    SCROLLBAR
+========================================================== */
+
+::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#0d1b2d;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#324760;
+
+    border-radius:20px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:$pink;
+
+}
+
+/* ==========================================================
+                    FLOATING GLOW
+========================================================== */
+
+.interview-page::after{
+
+    content:"";
+
+    position:fixed;
+
+    right:-180px;
+
+    bottom:-180px;
+
+    width:420px;
+
+    height:420px;
+
+    border-radius:50%;
+
+    background:radial-gradient(
+
+        circle,
+
+        rgba(255,93,135,.08),
+
+        transparent 70%
+
+    );
+
+    filter:blur(90px);
+
+    pointer-events:none;
+
+}
+
+/* ==========================================================
+                    SMOOTH ANIMATIONS
+========================================================== */
+
+.question-card{
+
+    animation:fadeUp .45s ease;
+
+}
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(20px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ==========================================================
+                    SELECTION
+========================================================== */
+
+::selection{
+
+    background:$pink;
+
+    color:white;
+
+}
