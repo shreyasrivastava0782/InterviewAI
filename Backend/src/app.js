@@ -9,10 +9,12 @@ app.use(cookieParser());
 app.use(cors({
     origin:[
         "http://localhost:5173",
-        process.env.CLIENT_URL
+        "https://interview-ai-tawny-tau.vercel.app"
     ],
     credentials:true
 }))
+
+console.log(process.env.CLIENT_URL)
 
 //require all the routes here
 const authRouter=require("./routes/auth.routes")
