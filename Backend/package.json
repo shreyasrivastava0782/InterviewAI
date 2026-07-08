@@ -5,12 +5,14 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "npx nodemon server.js"
+    "dev": "npx nodemon server.js",
+      "postinstall": "npx puppeteer browsers install chrome"
   },
   "author": "Shreya Srivastava",
   "license": "ISC",
   "dependencies": {
     "@google/genai": "^2.10.0",
+    "@puppeteer/browsers": "^3.0.6",
     "bcrypt": "^6.0.0",
     "bcryptjs": "^3.0.3",
     "cookie-parser": "^1.4.7",
